@@ -127,6 +127,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
 export PATH=$JAVA_HOME/bin:$HOME/.local/bin:$PATH:
 # add macro to use tmux-sessionizer
-bind '"\C-f": "tmux-sessionizer\n"'
+bind '"\C-f": "tmux-sessionizer.sh\n"'
 # bind -s ^f "tmux-sessionizer\n"
 #export CLASSPATH=$CLASSPATH:~/Documents/java_libraries/lib/*.jar

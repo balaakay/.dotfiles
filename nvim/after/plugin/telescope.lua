@@ -11,7 +11,7 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope find files' 
 -- from within the config/neovim directory
 vim.keymap.set('n', '<leader>en', function()
   builtin.find_files {
-    cwd = vim.fn.stdpath("config")
+    cwd = os.getenv("HOME") .. "/.dotfiles/nvim/"
   }
 end)
 

@@ -43,7 +43,7 @@ if [ "$(uname)" = "Linux" ] ; then
 
     if ! diff -qr "$input_dir" "$output_dir" > /dev/null; then
       echo "Differences found. Updating the destination directory..."
-      # rsync -av --delete "$input_dir/" "$output_dir/"
+      rsync -av --delete "$input_dir/" "$output_dir/"
       echo "Destination directory updated."
     else
       echo "No differences found. Nothing to do."
