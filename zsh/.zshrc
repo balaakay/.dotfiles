@@ -1,1 +1,1 @@
-alias c='clear'
+# hello

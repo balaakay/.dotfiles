@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 
 # I know there is an updated version of this script that allows me to set up
@@ -36,11 +36,10 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # If someone wants to make this extensible, i'll accept
-    # PR
+    # This is from thePrimeagen
     # selected=$(find ~/ ~/personal ~/personal/dev/env/.config -mindepth 1 -maxdepth 1 -type d | fzf)
     # This is my personal setup for my linux machine. I may have to make changes so it can run on all OS
-    selected=$(find /home ~/ ~/Documents ~/Documents/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find /home ~/ ~/projects ~/Documents ~/Documents/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

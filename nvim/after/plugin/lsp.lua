@@ -17,6 +17,7 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
 end
 
 lsp_zero.extend_lspconfig({
@@ -55,8 +56,8 @@ require('lspconfig').pylsp.setup({
 })
 require('lspconfig').sqlls.setup({})
 require('lspconfig').vuels.setup({})
--- require('lspconfig').jdtls.setup( cmd = {'jdtls'})
-require('lspconfig').jdtls.setup({})
+require('lspconfig').jdtls.setup({ cmd = {'jdtls'}})
+-- require('lspconfig').jdtls.setup({})
     -- settings = {
     --     java = {
     --         errors = {
@@ -73,6 +74,7 @@ require('lspconfig').jdtls.setup({})
     --     return git_root
     -- end
 
+local luasnip = require('luasnip')
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 cmp.setup({
@@ -80,11 +82,13 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'buffer'},
     {name = 'path'},
+    { name = "vim-dadbod-completion" },
   },
   snippet = {
     expand = function(args)
       -- You need Neovim v0.10 to use vim.snippet
-      vim.snippet.expand(args.body)
+      -- vim.snippet.expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -94,38 +98,5 @@ cmp.setup({
   -- remap this. tmux is using this keybind
   -- ['<C-Space>'] = cmp.mapping.complete(),
 }
-
   --mapping = cmp.mapping.preset.insert({}),
 })
-
---local bypass_chars = { ';', ',', ']', '}', '\'', '"', '>'}
-
---local function bypass_if_needed(fallback, char)
---  local line = vim.api.nvim_get_current_line()
---  local cursor_col = vim.api.nvim_win_get_cursor(0)[2] + 1
---  local next_char = line:sub(cursor_col, cursor_col)
-
---  if next_char == char then
---    vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1], cursor_col })
---  else
---    fallback()
---  end
---end
-
---local bypass_mappings = {}
---for _, char in ipairs(bypass_chars) do
---  bypass_mappings[char] = cmp.mapping(function(fallback)
---    bypass_if_needed(fallback, char)
---  end, { 'i', 's' })
---end
-
---local custom_mappings = {
---  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
---  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
---  ['<C-y>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
---  ['<C-Space>'] = cmp.mapping.complete(),
---}
-
---local merged_mappings = vim.tbl_extend('force', bypass_mappings, custom_mappings)
-
-

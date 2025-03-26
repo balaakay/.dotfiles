@@ -27,9 +27,16 @@ return require('packer').startup(function(use)
     }
 
   use {'nvim-treesitter/playground'}
-  use {'theprimeagen/harpoon'}
+  use {
+    'theprimeagen/harpoon',
+    branch = "harpoon2",
+    requres = { {"nvim-lua/plenary.nvim"} }
+  }
   use {'mbbill/undotree'}
   use {'tpope/vim-fugitive'}
+  use {'tpope/vim-dadbod'}
+  use {'kristijanhusak/vim-dadbod-completion'}
+  use {'kristijanhusak/vim-dadbod-ui'}
   use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
   use {'williamboman/mason.nvim'}    -- Language server installer
   use {'williamboman/mason-lspconfig.nvim'} -- Integration between mason and lspconfig

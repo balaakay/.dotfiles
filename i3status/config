@@ -1,0 +1,39 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 5
+}
+
+order += "ethernet eth0"
+order += "memory"
+order += "load"
+order += "volume master"
+order += "disk /"
+order += "tztime local"
+
+tztime local {
+  format = "%Y-%m-%d %H:%M:%S"
+}
+
+
+load {
+  format = "Load: %1min"
+}
+
+volume master {
+  format = "Vol: %volume"
+  device = "default"
+  mixer = "Master"
+}
+
+disk "/" {
+  format = "Available: %free"
+}
+
+memory {
+  format = "Memory: %used / %total"
+}
+
+ethernet enp4s0 {
+  format_up = "Net: %ip"
+}
