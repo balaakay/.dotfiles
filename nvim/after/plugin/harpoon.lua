@@ -1,9 +1,26 @@
 local harpoon = require("harpoon")
 
 harpoon:setup({
-    save_on_toggle = true,
-  }
-)
+  settings = {
+    -- Global settings (currently unused)
+  },
+  default = {
+    -- Default configuration for any list
+    save_on_toggle = false,
+    sync_on_ui_close = true,
+    key = function()
+      return "<C-e>" -- Default keybinding
+    end,
+  },
+  -- Named list configurations (optional)
+  my_named_list = {
+    save_on_toggle = false, -- Override default behavior for this list
+    key = function()
+      return "<leader>m" -- Custom keybinding for this list
+    end,
+  },
+})
+
 
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
