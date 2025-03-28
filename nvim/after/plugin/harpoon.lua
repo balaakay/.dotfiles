@@ -6,11 +6,8 @@ harpoon:setup({
   },
   default = {
     -- Default configuration for any list
-    save_on_toggle = false,
+    save_on_toggle = true,
     sync_on_ui_close = true,
-    key = function()
-      return "<C-e>" -- Default keybinding
-    end,
   },
   -- Named list configurations (optional)
   my_named_list = {
@@ -22,18 +19,17 @@ harpoon:setup({
 })
 
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon: add file to jump list" })
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon: toggle UI" })
 
-vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end, { desc = "Harpoon: select file 1" })
+vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end, { desc = "Harpoon: select file 2" })
+vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end, { desc = "Harpoon: select file 3" })
+vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end, { desc = "Harpoon: select file 4" })
 -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
 
-vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end, { desc = "Harpoon: Alternate files, Previous" })
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end, { desc = "Harpoon: Alternate files, Next" })
 
 
 -- basic telescope configuration
