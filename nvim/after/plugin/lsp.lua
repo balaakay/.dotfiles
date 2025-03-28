@@ -1,9 +1,5 @@
 local lsp_zero = require('lsp-zero')
 
---vim.lsp.set_log_path(vim.fn.stdpath('cache') .. '/lsp.log')
---vim.lsp.set_log_level("debug")
--- lsp_attach is where you enable features that only work
--- if there is a language server active in the file
 local lsp_attach = function(client, bufnr)
   local opts = {buffer = bufnr}
 
@@ -57,22 +53,6 @@ require('lspconfig').pylsp.setup({
 require('lspconfig').sqlls.setup({})
 require('lspconfig').vuels.setup({})
 require('lspconfig').jdtls.setup({ cmd = {'jdtls'}})
--- require('lspconfig').jdtls.setup({})
-    -- settings = {
-    --     java = {
-    --         errors = {
-    --             ignored = {536871240}
-    --         }
-    --     }
-    -- },
-    -- root_dir = function(fname)
-    --     print("current file path: ", fname)
-    --     local git_root = vim.fn.finddir(".git", vim.fn.fnamemodify(fname, ":p:h") .. ";")
-    --     if git_root == "" then
-    --         return nil
-    --     end
-    --     return git_root
-    -- end
 
 local luasnip = require('luasnip')
 local cmp = require('cmp')
