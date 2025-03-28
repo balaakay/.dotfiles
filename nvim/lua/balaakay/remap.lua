@@ -1,11 +1,11 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open NetRW" })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line up" })
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move cursor down half page & center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move cursor up half page & center" })
 
 --these two functions do not work on my linux desktop
 --vim.keymap.set("n", "n", "nzzzv")
@@ -20,9 +20,11 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "auto populate command line with search syntax" })
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>",
+  { desc = "Tmux sessionizer" })
 
 
 --custom balaakay keybinds
@@ -31,8 +33,8 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>")
 --vim.api.nvim_set_keymap('n', '<leader>oc',':!start "" "C:/Program Files/Google/Chrome/Application/chrome.exe" -ArgumentList " --disable-print-preview" "file:///%:p"<CR>', { noremap = true, silent = true })
 
 --Python (must be in virtual environment)
-vim.keymap.set("n", "<leader>py", ":w<CR>:!python %<CR>")
+vim.keymap.set("n", "<leader>py", ":w<CR>:!python %<CR>", { desc = "Run python script" })
 
 --Java (compile the file you are editing)
-vim.keymap.set("n", "<leader>jc", ":w<CR>:javac %<CR>")
+vim.keymap.set("n", "<leader>jc", ":w<CR>:javac %<CR>", { desc = "compile java file" })
 
