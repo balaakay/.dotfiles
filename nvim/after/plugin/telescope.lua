@@ -5,7 +5,7 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope: find files' })
 
 -- search files inside git
-vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Telescope: git files' })
+vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = 'Telescope: git files' })
 
 -- This stands for edit neovim. will automatically open a find_files window
 -- from within the config/neovim directory

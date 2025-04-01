@@ -38,3 +38,27 @@ vim.keymap.set("n", "<leader>py", ":w<CR>:!python %<CR>", { desc = "Run python s
 --Java (compile the file you are editing)
 vim.keymap.set("n", "<leader>jc", ":w<CR>:javac %<CR>", { desc = "compile java file" })
 
+
+
+
+
+-- Define a function for the keybind
+local function jsxStringNotation()
+  -- vim.api.nvim_feedkeys('a',"n", false)
+  -- vim.api.nvim_put({ '{""}' }, "c", false, true)
+  vim.api.nvim_feedkeys('a{""}', "n", false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c><Left><Left>", true, false, true), "n", false)
+  vim.api.nvim_feedkeys('a', "n", false)
+  -- vim.api.nvim_feedkeys('$F"i', "n", false)
+  -- vim.api.nvim_feedkeys('a',"n", false)
+end
+
+-- Set up the autocmd to apply the keybind for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    -- Set the keybind (e.g., <leader>q) for the current buffer
+    vim.keymap.set("n", "<leader>js", jsxStringNotation, { buffer = true })
+  end,
+})
+
