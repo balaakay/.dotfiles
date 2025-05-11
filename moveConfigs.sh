@@ -17,6 +17,7 @@ input_dirs=(
   "./alacritty"
   "./ghostty"
   "./.local/bin"
+  "./hypr"
 )
 
 output_dirs=(
@@ -27,6 +28,7 @@ output_dirs=(
   "$HOME/.config/alacritty"
   "$HOME/.config/ghostty"
   "$HOME/.local/bin"
+  "$HOME/.config/hypr"
 )
 
 
