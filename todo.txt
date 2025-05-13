@@ -1,0 +1,16 @@
+this file is for all the stuff I need to do.
+
+write an arch linux install script for all packages I have installed on this device
+  (could be for different distro's using apt/pacman/etc.)
+
+make sure the zsh install/configuration is correct. I used some kind of 'sh -c $(...)'
+command when installing oh-my-zsh
+
+update the dotfiles directory to move things efficiently. Should I take a look at
+prime's DEV_ENV script? maybe that is better than my solution
+
+get waybar installed/working
+
+finish configuring hyprland to meet my needs
+
+do any other zsh configs I need

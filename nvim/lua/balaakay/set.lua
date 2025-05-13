@@ -3,6 +3,11 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+
+-- netRW settings
+vim.g.netrw_banner = 0
+--
+
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
