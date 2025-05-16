@@ -102,3 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+bindkey -s '^F' 'tmux-sessionizer.sh\n'
+
+
+
+export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
+export PATH=$JAVA_HOME/bin:$HOME/.local/bin:$PATH:

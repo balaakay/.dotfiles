@@ -39,7 +39,21 @@ else
     # This is from thePrimeagen
     # selected=$(find ~/ ~/personal ~/personal/dev/env/.config -mindepth 1 -maxdepth 1 -type d | fzf)
     # This is my personal setup for my linux machine. I may have to make changes so it can run on all OS
-    selected=$(find /home ~/ ~/projects ~/Documents ~/Documents/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find /home ~/ ~/projects ~/Documents -mindepth 1 -maxdepth 1 -type d \
+      ! -name ".mozilla" \
+      ! -name ".nv" \
+      ! -name ".cargo" \
+      ! -name "paru" \
+      ! -name ".oh-my-zsh" \
+      ! -name ".cache" \
+      ! -name ".pki" \
+      ! -name ".ssh" \
+      ! -name "Videos" \
+      ! -name "Pictures" \
+      ! -name "Desktop" \
+      ! -name "Templates" \
+      ! -name "Music" \
+      | fzf)
 fi
 
 if [[ -z $selected ]]; then
