@@ -53,6 +53,8 @@ else
       ! -name "Desktop" \
       ! -name "Templates" \
       ! -name "Music" \
+      ! -name ".npm" \
+      ! -name ".gnupg" \
       | fzf)
 fi
 
