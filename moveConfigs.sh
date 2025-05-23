@@ -18,6 +18,7 @@ input_dirs=(
   "./ghostty"
   "./.local/bin"
   "./hypr"
+  # "./waybar"
 )
 
 output_dirs=(
@@ -29,6 +30,7 @@ output_dirs=(
   "$HOME/.config/ghostty"
   "$HOME/.local/bin"
   "$HOME/.config/hypr"
+  # "$HOME/.config/waybar"
 )
 
 
