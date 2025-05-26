@@ -29,18 +29,11 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>",
 
 --custom balaakay keybinds
 
--- vim.keymap.set("n", "<leader>oc", ':OpenInChrome<CR>', { noremap = true, silent = true})
---vim.api.nvim_set_keymap('n', '<leader>oc',':!start "" "C:/Program Files/Google/Chrome/Application/chrome.exe" -ArgumentList " --disable-print-preview" "file:///%:p"<CR>', { noremap = true, silent = true })
-
 --Python (must be in virtual environment)
 vim.keymap.set("n", "<leader>py", ":w<CR>:!python %<CR>", { desc = "Run python script" })
 
 --Java (compile the file you are editing)
 vim.keymap.set("n", "<leader>jc", ":w<CR>:javac %<CR>", { desc = "compile java file" })
-
-
-
-
 
 -- Define a function for the keybind
 local function jsxStringNotation()

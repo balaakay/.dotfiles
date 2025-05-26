@@ -13,8 +13,15 @@ require("mason-lspconfig").setup({
   }
 })
 
+vim.diagnostic.config({
+  signs = true,
+  virtual_text = true,
+  underline = false,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 -- LSP Attach function for keybindings
----@diagnostic disable-next-line: unused-local
 local function lsp_attach(client, bufnr)
   local opts = { buffer = bufnr }
 
@@ -31,14 +38,6 @@ local function lsp_attach(client, bufnr)
   vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
 end
 
-vim.diagnostic.config({
-  signs = true,
-  sign_highlight = true,
-  virtual_text = true, -- Enable virtual text
-  underline = false, -- Disable underline
-  update_in_insert = false, -- Disable updates while in insert mode
-})
-
 -- Default capabilities
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -51,29 +50,17 @@ local default_config = {
 -- Setup each LSP server
 local lspconfig = require('lspconfig')
 
--- Get the list of installed servers from mason-lspconfig
-local mason_lspconfig = require("mason-lspconfig")
-local installed_servers = mason_lspconfig.get_installed_servers()
+-- Manually set up each server
+lspconfig.lua_ls.setup(default_config)
+lspconfig.cssls.setup(default_config)
+lspconfig.html.setup(default_config)
+lspconfig.eslint.setup(default_config)
+lspconfig.ts_ls.setup(default_config)
+lspconfig.pylsp.setup(default_config)
+lspconfig.sqlls.setup(default_config)
+lspconfig.vuels.setup(default_config)
+lspconfig.jdtls.setup(default_config)
 
--- Set up each installed server with our default config
-for _, server_name in ipairs(installed_servers) do
-  -- Special configuration for specific servers
-  if server_name == "lua_ls" then
-    lspconfig.lua_ls.setup(vim.tbl_extend('force', default_config, {
-      settings = {
-        Lua = {
-          diagnostics = { globals = { 'vim' } },
-        },
-      },
-    }))
-  elseif server_name == "pylsp" then
-    -- Add your special pylsp config if needed
-    lspconfig.pylsp.setup(default_config)
-  else
-    -- Default setup for most servers
-    lspconfig[server_name].setup(default_config)
-  end
-end
 
 -- Configure nvim-cmp
 local cmp = require('cmp')

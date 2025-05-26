@@ -5,12 +5,14 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use {'folke/tokyonight.nvim'}
   use({
     'rose-pine/neovim',
     as = 'rose-pine',
     config = function()
       require('rose-pine').setup({
-        disable_background = true,
+        variant = 'moon',
+        -- disable_background = true,
         styles = {
           italic = false,
         },
@@ -19,8 +21,7 @@ return require('packer').startup(function(use)
   })
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
-	  -- or                            , branch = '0.1.x',
+	  'nvim-telescope/telescope.nvim',--, tag = '0.1.8',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -43,7 +44,7 @@ return require('packer').startup(function(use)
   use {'tpope/vim-dadbod'}
   use {'kristijanhusak/vim-dadbod-completion'}
   use {'kristijanhusak/vim-dadbod-ui'}
-  use {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'}
+  -- use {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'}
   use 'saadparwaiz1/cmp_luasnip'   -- LuaSnip completion source for nvim-cmp
   use {
     'neovim/nvim-lspconfig',
