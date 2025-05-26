@@ -48,50 +48,54 @@ vim.diagnostic.config({
 
 
 
--- Default capabilities
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- Default config for all LSP servers
-local default_config = {
-  on_attach = lsp_attach,
-  capabilities = capabilities,
-}
-
--- LSP Servers configuration
-local lspconfig = require('lspconfig')
-
--- Setup each LSP server
-lspconfig.cssls.setup(default_config)
-lspconfig.html.setup(default_config)
-lspconfig.lua_ls.setup(vim.tbl_extend('force', default_config, {
-  settings = {
-    Lua = {
-      diagnostics = { globals = { 'vim' } },
-    },
-  },
-}))
-lspconfig.eslint.setup(default_config)
-lspconfig.ts_ls.setup(default_config)
-lspconfig.pylsp.setup(vim.tbl_extend('force', default_config, {
-  cmd = { "/home/balaakay/Documents/projects/housingMarketResearch/mainVenv/bin/pylsp" },
-  filetypes = { "python" },
-  settings = {
-    pylsp = {
-      plugins = {
-        jedi_completion = { enabled = true },
-        jedi_hover = { enabled = true },
-        jedi_references = { enabled = true },
-        jedi_signature_help = { enabled = true },
-        jedi_symbols = { enabled = true },
-      }
-    }
-  }
-}))
-lspconfig.sqlls.setup(default_config)
-lspconfig.vuels.setup(default_config)
-lspconfig.jdtls.setup(vim.tbl_extend('force', default_config, {
-  cmd = { 'jdtls' }
-}))
+-- I removed these lines because I began using mason and the vim.diagnostic.config
+-- to handle all these issues. If I need to figure out how to set up pylsp or 
+-- something later on, I can uncomment this.
+--
+-- -- Default capabilities
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--
+-- -- Default config for all LSP servers
+-- local default_config = {
+--   on_attach = lsp_attach,
+--   capabilities = capabilities,
+-- }
+--
+-- -- LSP Servers configuration
+-- local lspconfig = require('lspconfig')
+--
+-- -- Setup each LSP server
+-- lspconfig.cssls.setup(default_config)
+-- lspconfig.html.setup(default_config)
+-- lspconfig.lua_ls.setup(vim.tbl_extend('force', default_config, {
+--   settings = {
+--     Lua = {
+--       diagnostics = { globals = { 'vim' } },
+--     },
+--   },
+-- }))
+-- lspconfig.eslint.setup(default_config)
+-- lspconfig.ts_ls.setup(default_config)
+-- lspconfig.pylsp.setup(vim.tbl_extend('force', default_config, {
+--   cmd = { "/home/balaakay/Documents/projects/housingMarketResearch/mainVenv/bin/pylsp" },
+--   filetypes = { "python" },
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         jedi_completion = { enabled = true },
+--         jedi_hover = { enabled = true },
+--         jedi_references = { enabled = true },
+--         jedi_signature_help = { enabled = true },
+--         jedi_symbols = { enabled = true },
+--       }
+--     }
+--   }
+-- }))
+-- lspconfig.sqlls.setup(default_config)
+-- lspconfig.vuels.setup(default_config)
+-- lspconfig.jdtls.setup(vim.tbl_extend('force', default_config, {
+--   cmd = { 'jdtls' }
+-- }))
 
 -- Configure nvim-cmp
 local cmp = require('cmp')
