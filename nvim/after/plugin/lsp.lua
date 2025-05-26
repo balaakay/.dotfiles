@@ -13,10 +13,6 @@ require("mason-lspconfig").setup({
   }
 })
 
-
-
-
-
 -- LSP Attach function for keybindings
 ---@diagnostic disable-next-line: unused-local
 local function lsp_attach(client, bufnr)
@@ -35,8 +31,6 @@ local function lsp_attach(client, bufnr)
   vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
 end
 
-
-
 vim.diagnostic.config({
   signs = true,
   sign_highlight = true,
@@ -45,57 +39,41 @@ vim.diagnostic.config({
   update_in_insert = false, -- Disable updates while in insert mode
 })
 
+-- Default capabilities
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Default config for all LSP servers
+local default_config = {
+  on_attach = lsp_attach,
+  capabilities = capabilities,
+}
 
+-- Setup each LSP server
+local lspconfig = require('lspconfig')
 
--- I removed these lines because I began using mason and the vim.diagnostic.config
--- to handle all these issues. If I need to figure out how to set up pylsp or 
--- something later on, I can uncomment this.
---
--- -- Default capabilities
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
--- -- Default config for all LSP servers
--- local default_config = {
---   on_attach = lsp_attach,
---   capabilities = capabilities,
--- }
---
--- -- LSP Servers configuration
--- local lspconfig = require('lspconfig')
---
--- -- Setup each LSP server
--- lspconfig.cssls.setup(default_config)
--- lspconfig.html.setup(default_config)
--- lspconfig.lua_ls.setup(vim.tbl_extend('force', default_config, {
---   settings = {
---     Lua = {
---       diagnostics = { globals = { 'vim' } },
---     },
---   },
--- }))
--- lspconfig.eslint.setup(default_config)
--- lspconfig.ts_ls.setup(default_config)
--- lspconfig.pylsp.setup(vim.tbl_extend('force', default_config, {
---   cmd = { "/home/balaakay/Documents/projects/housingMarketResearch/mainVenv/bin/pylsp" },
---   filetypes = { "python" },
---   settings = {
---     pylsp = {
---       plugins = {
---         jedi_completion = { enabled = true },
---         jedi_hover = { enabled = true },
---         jedi_references = { enabled = true },
---         jedi_signature_help = { enabled = true },
---         jedi_symbols = { enabled = true },
---       }
---     }
---   }
--- }))
--- lspconfig.sqlls.setup(default_config)
--- lspconfig.vuels.setup(default_config)
--- lspconfig.jdtls.setup(vim.tbl_extend('force', default_config, {
---   cmd = { 'jdtls' }
--- }))
+-- Get the list of installed servers from mason-lspconfig
+local mason_lspconfig = require("mason-lspconfig")
+local installed_servers = mason_lspconfig.get_installed_servers()
+
+-- Set up each installed server with our default config
+for _, server_name in ipairs(installed_servers) do
+  -- Special configuration for specific servers
+  if server_name == "lua_ls" then
+    lspconfig.lua_ls.setup(vim.tbl_extend('force', default_config, {
+      settings = {
+        Lua = {
+          diagnostics = { globals = { 'vim' } },
+        },
+      },
+    }))
+  elseif server_name == "pylsp" then
+    -- Add your special pylsp config if needed
+    lspconfig.pylsp.setup(default_config)
+  else
+    -- Default setup for most servers
+    lspconfig[server_name].setup(default_config)
+  end
+end
 
 -- Configure nvim-cmp
 local cmp = require('cmp')

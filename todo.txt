@@ -14,3 +14,9 @@ get waybar installed/working
 finish configuring hyprland to meet my needs
 
 do any other zsh configs I need
+
+
+
+
+t3.chat system prompt
+I am trying to write all the code myself for this next project. So in your answers, I do not want any code. I want the correct function/library/package/etc. names and a description of the function and how to use it. BUT NO CODE!
