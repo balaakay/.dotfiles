@@ -38,6 +38,7 @@ local function lsp_attach(client, bufnr)
   vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
 end
 
+
 -- Default capabilities
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -51,15 +52,15 @@ local default_config = {
 local lspconfig = require('lspconfig')
 
 -- Manually set up each server
-lspconfig.lua_ls.setup(default_config)
-lspconfig.cssls.setup(default_config)
-lspconfig.html.setup(default_config)
-lspconfig.eslint.setup(default_config)
-lspconfig.ts_ls.setup(default_config)
-lspconfig.pylsp.setup(default_config)
-lspconfig.sqlls.setup(default_config)
-lspconfig.vuels.setup(default_config)
-lspconfig.jdtls.setup(default_config)
+-- lspconfig.lua_ls.setup(default_config)
+-- lspconfig.cssls.setup(default_config)
+-- lspconfig.html.setup(default_config)
+-- lspconfig.eslint.setup(default_config)
+-- lspconfig.ts_ls.setup(default_config)
+-- lspconfig.pylsp.setup(default_config)
+-- lspconfig.sqlls.setup(default_config)
+-- lspconfig.vuels.setup(default_config)
+-- lspconfig.jdtls.setup(default_config)
 
 
 -- Configure nvim-cmp
