@@ -1,11 +1,10 @@
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use {'folke/tokyonight.nvim'}
+  use { 'folke/tokyonight.nvim' }
   use({
     'rose-pine/neovim',
     as = 'rose-pine',
@@ -21,8 +20,8 @@ return require('packer').startup(function(use)
   })
 
   use {
-	  'nvim-telescope/telescope.nvim',--, tag = '0.1.8',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', --, tag = '0.1.8',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use {
@@ -33,19 +32,19 @@ return require('packer').startup(function(use)
     end,
   }
 
-  use {'nvim-treesitter/playground'}
+  use { 'nvim-treesitter/playground' }
   use {
     'theprimeagen/harpoon',
     -- branch = "harpoon2",
-    requres = { {"nvim-lua/plenary.nvim"} }
+    requres = { { "nvim-lua/plenary.nvim" } }
   }
-  use {'mbbill/undotree'}
-  use {'tpope/vim-fugitive'}
-  use {'tpope/vim-dadbod'}
-  use {'kristijanhusak/vim-dadbod-completion'}
-  use {'kristijanhusak/vim-dadbod-ui'}
+  use { 'mbbill/undotree' }
+  use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-dadbod' }
+  use { 'kristijanhusak/vim-dadbod-completion' }
+  use { 'kristijanhusak/vim-dadbod-ui' }
   -- use {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'}
-  use 'saadparwaiz1/cmp_luasnip'   -- LuaSnip completion source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- LuaSnip completion source for nvim-cmp
   use {
     'neovim/nvim-lspconfig',
     'hrsh7th/nvim-cmp',
@@ -57,5 +56,28 @@ return require('packer').startup(function(use)
     'williamboman/mason.nvim'
   }
 
+  use {
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup {
+        formatters_by_ft = {
+          php = { 'php_cs_fixer' },
+        },
+        formatters = {
+          php_cs_fixer = {
+            command = 'php-cs-fixer',
+            args = {
+              'fix',
+              '$FILENAME',
+              '--using-cache=no',
+              '--rules=@PSR12,braces.position_after_functions_and_oop_constructs:same',
+              '--quiet'
+            },
+            stdin = false,
+          },
+        },
+      }
+    end,
+  }
 
-  end)
+end)

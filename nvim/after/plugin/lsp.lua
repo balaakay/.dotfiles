@@ -4,11 +4,9 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "cssls",
     "html",
-    "eslint",
     "ts_ls",
     "pylsp",
     "sqlls",
-    "vuels",
     "jdtls"
   }
 })
