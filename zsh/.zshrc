@@ -104,6 +104,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 unalias gts
 bindkey -s '^F' 'tmux-sessionizer.sh\n'
+alias work='/home/balaakay/.local/bin/work.sh'
+alias personal='/home/balaakay/.local/bin/personal.sh'
 
 
 
