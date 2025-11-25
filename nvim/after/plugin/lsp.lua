@@ -1,5 +1,8 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
+
+local mason_lspconfig = require("mason-lspconfig")
+
+mason_lspconfig.setup({
   ensure_installed = {
     "lua_ls",
     "cssls",
@@ -7,8 +10,10 @@ require("mason-lspconfig").setup({
     "ts_ls",
     "pylsp",
     "sqlls",
-    "jdtls"
-  }
+    "jdtls",
+    "intelephense",
+  },
+  automatic_installation = true,
 })
 
 vim.diagnostic.config({
@@ -18,50 +23,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-
--- THIS IS COMMENTED OUT BECAUSE THE AUTOCMD IN INIT.LUA HANDLES THE KEYBINDS
--- NOW THAT NEOVIM HAS AN INTEGRATED LSP
---
--- LSP Attach function for keybindings
--- local function lsp_attach(client, bufnr)
---   local opts = { buffer = bufnr, silent = true, nowait = true }
---
---   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
---   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
---   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
---   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
---   vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
---   vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
---   vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
---   vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
---   vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, opts)
---   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
---   vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
--- end
---
---
--- -- Default capabilities
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
--- -- Default config for all LSP servers
--- local default_config = {
---   on_attach = lsp_attach,
---   capabilities = capabilities,
--- }
---
--- -- Setup each LSP server
--- local lspconfig = require('lspconfig')
-
--- Manually set up each server
--- lspconfig.lua_ls.setup(default_config)
--- lspconfig.cssls.setup(default_config)
--- lspconfig.html.setup(default_config)
--- lspconfig.eslint.setup(default_config)
--- lspconfig.ts_ls.setup(default_config)
--- lspconfig.pylsp.setup(default_config)
--- lspconfig.sqlls.setup(default_config)
--- lspconfig.vuels.setup(default_config)
--- lspconfig.jdtls.setup(default_config)
 
 
 -- Configure nvim-cmp
