@@ -3,20 +3,11 @@ this file is for all the stuff I need to do.
 write an arch linux install script for all packages I have installed on this device
   (could be for different distro's using apt/pacman/etc.)
 
-make sure the zsh install/configuration is correct. I used some kind of 'sh -c $(...)'
-command when installing oh-my-zsh
-
 update the dotfiles directory to move things efficiently. Should I take a look at
 prime's DEV_ENV script? maybe that is better than my solution
 
-get waybar installed/working
 
-finish configuring hyprland to meet my needs
-
-do any other zsh configs I need
-
-
-
-
-t3.chat system prompt
-I am trying to write all the code myself for this next project. So in your answers, I do not want any code. I want the correct function/library/package/etc. names and a description of the function and how to use it. BUT NO CODE!
+- [ ] add an autocommand for neovim that disables nvm-comp for the current buffer
+    so I can quit getting text completion in txt files based on words previously
+    typed because I will never need that. I will just always want to type it out
+    faster than I can cycle through a completion list.

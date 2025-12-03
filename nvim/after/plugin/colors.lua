@@ -1,11 +1,28 @@
-function ColorMyPencils(color)
-  color = color or "rose-pine-moon"
-  vim.cmd.colorscheme(color)
+function ColorMyPencils()
+  local colorschemes = {"rose-pine", "melange", "onenord"}
+  local current = vim.g.colors_name
+  local new = colorschemes[1]
+  for index, value in ipairs(colorschemes) do
+    if colorschemes[index] == current then
+      if index == #colorschemes then
+        new = colorschemes[1]
+        break
+      else
+        new = colorschemes[index + 1]
+        break
+      end
+    end
+  end
 
-  -- vim.api.nvim_set_h1(0, "Normal", { bg = "none" })
-  -- vim.api.nvim_set_h1(0, "NormalFloat", { bg = "none" })
+  if new == "rose-pine" then
+  vim.cmd.colorscheme("rose-pine-moon")
+  end
+  vim.cmd.colorscheme(new)
+  if current == nil then
+  else
+    print("Old colorscheme: ", current, " New colorscheme: ", new)
+  end
+
 end
 
-_G.ColorMyPencils = ColorMyPencils
-
-ColorMyPencils()
+-- ColorMyPencils()

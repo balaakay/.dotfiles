@@ -5,19 +5,25 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use { 'folke/tokyonight.nvim' }
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-      require('rose-pine').setup({
-        variant = 'moon',
-        -- disable_background = true,
-        styles = {
-          italic = false,
-        },
-      })
-    end
+  use({'rose-pine/neovim',
+    -- as = 'rose-pine',
+    -- config = function()
+    --   require('rose-pine').setup({
+    --     variant = 'moon',
+    --     -- disable_background = true,
+    --     styles = {
+    --       italic = false,
+    --     },
+    --   })
+    --   vim.cmd.colorscheme 'rose-pine'
+    -- end
   })
+  vim.cmd.colorscheme 'rose-pine-moon'
+
+  -- Alternate colorscheme from rose-pine
+  use 'AlexvZyl/nordic.nvim'
+  use 'savq/melange-nvim'
+  use 'rmehri01/onenord.nvim'
 
   use {
     'nvim-telescope/telescope.nvim', --, tag = '0.1.8',
