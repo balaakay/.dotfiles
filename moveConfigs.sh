@@ -83,28 +83,56 @@ elif [ "$(uname)" = "Darwin" ] ; then
   echo "This is a Mac."
   # MacOS Configuration
 
-  # nvim config
+  for (( i=0; i<${#input_dirs[@]}; i++)); do
+    input_dir="${input_dirs[$i]}"
+    output_dir="${output_dirs[$i]}"
 
+    # i3 and i3status are Linux-specific, so skip them on macOS
+    if [[ "$input_dir" == "./i3" || "$input_dir" == "./i3status" || "$input_dir" == "./hypr" ]]; then
+      echo "Skipping $input_dir (Linux-specific) on macOS."
+      echo "-----------------------------------------------"
+      echo ""
+      continue
+    fi
 
-  # tmux config
+    echo "Processing $input_dir -> $output_dir"
 
+    # Ensure the parent directory exists for the output_dir
+    mkdir -p "$(dirname "$output_dir")"
 
-  # i3 config
+    if ! diff -qr "$input_dir" "$output_dir" > /dev/null; then
+      echo "Differences found. Updating the destination directory..."
+      # Use rsync for directory synchronization
+      rsync -av --delete "$input_dir/" "$output_dir/"
+      echo "Destination directory updated."
+    else
+      echo "No differences found. Nothing to do."
+    fi
 
-
-  # alacritty config
-
-
-  # ghostty config
-
+    echo "-----------------------------------------------"
+    echo ""
+  done
 
   # zsh config
+  # echo "moving zsh config"
+  # mkdir -p ~/.config/zsh/
+  # rsync -a --delete ./zsh/ ~/.config/zsh/
+  # rm -f ~/.zshrc
+  # cp ./zsh/.zshrc ~/.zshrc
 
 
   # bash config
+  # echo "moving bash config"
+  # rm -f ~/.profile
+  # cp ./.profile ~/.profile
+  # rm -f ~/.bashrc
+  # cp ./.bashrc ~/.bashrc
 
+  # git config
+  # echo "moving git config"
+  # rm -f ~/.gitconfig
+  # cp ./.gitconfig ~/.gitconfig
 
-  # .local directory
 
 else 
   echo "You're trying to use something other than Mac or Linux. Please handle this case"

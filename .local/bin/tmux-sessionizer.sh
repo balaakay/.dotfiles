@@ -38,24 +38,61 @@ if [[ $# -eq 1 ]]; then
 else
     # This is from thePrimeagen
     # selected=$(find ~/ ~/personal ~/personal/dev/env/.config -mindepth 1 -maxdepth 1 -type d | fzf)
-    # This is my personal setup for my linux machine. I may have to make changes so it can run on all OS
-    selected=$(find /home ~/ ~/projects ~/Documents ~/baseball -mindepth 1 -maxdepth 1 -type d \
-      ! -name ".mozilla" \
-      ! -name ".nv" \
-      ! -name ".cargo" \
-      ! -name "paru" \
-      ! -name ".oh-my-zsh" \
-      ! -name ".cache" \
-      ! -name ".pki" \
-      ! -name ".ssh" \
-      ! -name "Videos" \
-      ! -name "Pictures" \
-      ! -name "Desktop" \
-      ! -name "Templates" \
-      ! -name "Music" \
-      ! -name ".npm" \
-      ! -name ".gnupg" \
-      | fzf)
+    
+    # Have to remove tons of garbage in the home directory on Mac
+    if [ "$(uname)" = "Darwin" ] ; then
+      selected=$(find ~ ~/projects ~/Documents ~/baseball -mindepth 1 -maxdepth 1 -type d \
+        ! -name ".mozilla" \
+        ! -name ".nv" \
+        ! -name ".composer" \
+        ! -name ".vscode" \
+        ! -name ".pybaseball" \
+        ! -name ".npm" \
+        ! -name ".Trash" \
+        ! -name "Applications" \
+        ! -name "Movies" \
+        ! -name ".cocoapods" \
+        ! -name ".oracle_jre_usage" \
+        ! -name ".matplotlib" \
+        ! -name ".thinkorswim" \
+        ! -name ".maplesoft" \
+        ! -name ".cups" \
+        ! -name "intelephense" \
+        ! -name "Music" \
+        ! -name ".cargo" \
+        ! -name ".oh-my-zsh" \
+        ! -name ".cache" \
+        ! -name ".pki" \
+        ! -name ".ssh" \
+        ! -name "Videos" \
+        ! -name "Pictures" \
+        ! -name "Desktop" \
+        ! -name "Templates" \
+        ! -name "Music" \
+        ! -name ".npm" \
+        ! -name ".gnupg" \
+        | fzf)
+    
+    else
+      # This is my personal setup for my linux machine. I may have to make changes so it can run on all OS
+      selected=$(find ~/ ~/projects ~/Documents ~/baseball -mindepth 1 -maxdepth 1 -type d \
+        ! -name ".mozilla" \
+        ! -name ".nv" \
+        ! -name ".cargo" \
+        ! -name "paru" \
+        ! -name ".oh-my-zsh" \
+        ! -name ".cache" \
+        ! -name ".pki" \
+        ! -name ".ssh" \
+        ! -name "Videos" \
+        ! -name "Pictures" \
+        ! -name "Desktop" \
+        ! -name "Templates" \
+        ! -name "Music" \
+        ! -name ".npm" \
+        ! -name ".gnupg" \
+        | fzf)
+    fi
 fi
 
 if [[ -z $selected ]]; then
