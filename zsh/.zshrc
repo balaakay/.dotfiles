@@ -114,3 +114,5 @@ export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
 export COMPOSER_HOME="$HOME/.config/composer/vendor/bin"
 export PATH=$JAVA_HOME/bin:$COMPOSER_HOME:$HOME/.local/bin:$PATH:
 alias vim='nvim'
+ZSH_HIGHLIGHT_MAXLENGTH=0
+

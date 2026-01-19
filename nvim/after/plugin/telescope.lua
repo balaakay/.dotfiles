@@ -7,6 +7,8 @@ vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Telescope: find 
 -- search files inside git
 vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = 'Telescope: git files' })
 
+vim.keymap.set('n', '<leader>pr', '<cmd>Telescope resume<CR>', { desc = 'Telescope: resume' })
+
 --this allows you to grep any string inside the project you are in
 vim.keymap.set('n', '<leader>gs', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
