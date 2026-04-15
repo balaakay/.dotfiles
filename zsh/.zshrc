@@ -109,7 +109,7 @@ alias personal='/home/balaakay/.local/bin/personal.sh'
 
 
 
-export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
+export JAVA_HOME="/usr/local/java/jdk-26"
 # get zsh to understand all the things I download via composer.
 export COMPOSER_HOME="$HOME/.config/composer/vendor/bin"
 export PATH=$JAVA_HOME/bin:$COMPOSER_HOME:$HOME/.local/bin:$PATH:
