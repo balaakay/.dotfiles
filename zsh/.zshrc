@@ -113,6 +113,6 @@ export JAVA_HOME=/usr/lib/jvm/jdk-23.0.1
 # get zsh to understand all the things I download via composer.
 export COMPOSER_HOME="$HOME/.config/composer/vendor/bin"
 export PATH=$JAVA_HOME/bin:$COMPOSER_HOME:$HOME/.local/bin:$PATH:
+export PATH="/home/balaakay/.opencode/bin:$PATH"
 alias vim='nvim'
 ZSH_HIGHLIGHT_MAXLENGTH=0
-
